@@ -17,7 +17,6 @@ proto is unused\
 "
 
 COMMON_FLAGS="\
-    --config=release \
     --config=${ARCH} \
 "
 
@@ -42,6 +41,7 @@ fi
 
 function bazel_build() {
   bazel build \
+    --compilation_mode=dbg \
     ${COMMON_FLAGS} \
     "${@}" \
   2>&1 | grep --line-buffered -v -E "${OUTPUT_TO_IGNORE}"
